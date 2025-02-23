@@ -1,0 +1,8 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD 1bg_2019*
+ENV MYSQL_DATABASE db_eam
+ENV MYSQL_USER full_access_eam
+ENV MYSQL_PASSWORD full_access_eam
+
+EXPOSE 3306

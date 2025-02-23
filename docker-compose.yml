@@ -1,0 +1,35 @@
+services:
+  database:
+    build: 
+      context: ./MySql
+      dockerfile: Dockerfile
+    container_name: eam_database_test_1
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./MySql/data:/var/lib/mysql
+    networks:
+      - eam_test 
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root", "-p1bg_2019*"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    
+  adminer:
+    image: adminer
+    container_name: adminer_eam_test_1
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - eam_test
+    depends_on:
+      database:
+        condition: service_healthy
+
+networks:
+  eam_test:
+    driver: bridge
