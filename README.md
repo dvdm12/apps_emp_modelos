@@ -80,13 +80,14 @@ Este modelo se implementa utilizando Java Persistence API (JPA), lo que permite 
 
 Diagrama Entidad-Relación en Mermaid
 
-erDiagram
+
+
+    erDiagram
     FACULTAD {
         int id_facultad PK
         string nombre
         string ubicacion
     }
-    
     DECANO {
         int id_decano PK
         int id_facultad FK
