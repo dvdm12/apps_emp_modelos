@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="asignatura")
+@Table(name = "asignatura")
 public class Asignatura {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,15 +14,18 @@ public class Asignatura {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 20, unique = true)
     private String codigo;
 
-    @Column(nullable = false, name="creditos")
+    @Column(nullable = false)
     private int creditos;
 
-    @OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="docente_id")
-    private List<Docente> listaDocentes;
+    @ManyToOne
+    @JoinColumn(name = "id_docente", referencedColumnName = "id")
+    private Docente docente;
+
+    @ManyToMany(mappedBy = "asignaturas")
+    private List<Estudiante> estudiantes;
 
     public Long getId() {
         return id;
@@ -55,12 +59,21 @@ public class Asignatura {
         this.creditos = creditos;
     }
 
-    public List<Docente> getListaDocentes() {
-        return listaDocentes;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setListaDocentes(List<Docente> listaDocentes) {
-        this.listaDocentes = listaDocentes;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
 
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    
 }

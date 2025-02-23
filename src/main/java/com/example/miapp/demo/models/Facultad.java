@@ -1,21 +1,27 @@
 package com.example.miapp.demo.models;
 
 import jakarta.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
+@Table(name = "facultad")
 public class Facultad {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false, length = 100)
     private String nombre;
+    
+    @Column(nullable = false, length = 255)
     private String ubicacion;
-    
-    @OneToOne(mappedBy = "facultad")
+
+    @OneToOne(mappedBy = "facultad", cascade = CascadeType.ALL)
     private Decano decano;
-    
-    @OneToMany(mappedBy = "facultad")
-    private Set<Docente> docentes;
+
+    @OneToMany(mappedBy = "facultad", cascade = CascadeType.ALL)
+    private List<Docente> docentes;
 
     public Long getId() {
         return id;
@@ -49,11 +55,11 @@ public class Facultad {
         this.decano = decano;
     }
 
-    public Set<Docente> getDocentes() {
+    public List<Docente> getDocentes() {
         return docentes;
     }
 
-    public void setDocentes(Set<Docente> docentes) {
+    public void setDocentes(List<Docente> docentes) {
         this.docentes = docentes;
     }
 

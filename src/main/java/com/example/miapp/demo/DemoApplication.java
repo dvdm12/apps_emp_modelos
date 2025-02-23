@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.example.demo.models")
+@EntityScan(basePackages = "com.example.miapp.models")
 public class DemoApplication {
 
 	public static void main(String[] args) {

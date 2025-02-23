@@ -3,17 +3,27 @@ package com.example.miapp.demo.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "decano")
 public class Decano {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String nombre;
+
+    @Column(nullable = false, length = 100)
     private String apellido;
+
+    @Column(nullable = false, length = 20, unique = true)
     private String cedula;
+
+    @Column(nullable = false, length = 20, unique = true)
     private String celular;
-    
+
     @OneToOne
-    @JoinColumn(name = "facultad_id")
+    @JoinColumn(name = "id_facultad", referencedColumnName = "id", unique = true)
     private Facultad facultad;
 
     public Long getId() {

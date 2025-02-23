@@ -1,10 +1,12 @@
 package com.example.miapp.demo.models;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "docente")
 public class Docente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,14 +20,16 @@ public class Docente {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 20, unique = true)
     private String cedula;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "facultad_id", referencedColumnName = "id") 
+    @ManyToOne
+    @JoinColumn(name = "id_facultad", referencedColumnName = "id")
     private Facultad facultad;
 
-  
+    @OneToMany(mappedBy = "docente", cascade = CascadeType.ALL)
+    private List<Asignatura> asignaturas;
+
     public Long getId() {
         return id;
     }
@@ -73,4 +77,14 @@ public class Docente {
     public void setFacultad(Facultad facultad) {
         this.facultad = facultad;
     }
+
+    public List<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
+    public void setAsignaturas(List<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
+    }
+
+    
 }
