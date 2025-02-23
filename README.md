@@ -134,12 +134,12 @@ Diagrama Entidad-Relación en Mermaid
 
 Base de datos implementada: 
 
-![Esquema Base de Datos de Facultad](assets/schema.jpg)
+![schema base de datos phpmyadmin](assets/schema.jpg)
 
 
-Prueba creación de tablas por medio de JPA:
+Logs creación de tablas por medio de JPA:
 
-![Esquema Base de Datos de Facultad](assets/logs.jpg)
+![logs JPA](assets/logs.jpg)
 
 
 
