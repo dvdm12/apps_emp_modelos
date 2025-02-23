@@ -1,3 +1,5 @@
+Esquema Base de Datos de Facultad
+
 ![Esquema Base de Datos de Facultad](assets/Esquema.jpg)
 
 
@@ -75,23 +77,6 @@ Implementación con JPA
 
 Este modelo se implementa utilizando Java Persistence API (JPA), lo que permite mapear las entidades a tablas en una base de datos relacional. Se recomienda utilizar Hibernate como proveedor de JPA y configurarlo con Spring Boot para facilitar la gestión de las entidades y sus relaciones.
 
-Ejemplo de una entidad en JPA:
-
-@Entity
-@Table(name = "facultad")
-public class Facultad {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_facultad;
-
-    private String nombre;
-    private String ubicacion;
-    
-    @OneToMany(mappedBy = "facultad")
-    private List<Docente> docentes;
-
-    // Getters y Setters
-}
 
 Diagrama Entidad-Relación en Mermaid
 
@@ -104,6 +89,7 @@ erDiagram
     
     DECANO {
         int id_decano PK
+        int id_facultad FK
         string nombre
         string apellido
         string cedula
@@ -112,6 +98,7 @@ erDiagram
     
     DOCENTE {
         int id_docente PK
+        int id_facultad FK
         string nombre
         string apellido
         string titulo
@@ -120,6 +107,7 @@ erDiagram
     
     ASIGNATURA {
         int id_asignatura PK
+        int id_docente FK
         string nombre
         string codigo
         int creditos
@@ -133,10 +121,15 @@ erDiagram
         string direccion
     }
     
-    FACULTAD ||--|| DECANO : DIRIGIR
-    FACULTAD ||--|{ DOCENTE : PERTENECE
-    DOCENTE }|--|| ASIGNATURA : DICTAR
-    ESTUDIANTE }|--|| ASIGNATURA : INSCRIBIR
+    ESTUDIANTE_ASIGNATURA {
+        int id_estudiante FK
+        int id_asignatura FK
+    }
+    
+    FACULTAD ||--||DECANO : "tiene/dirige (1:1)"
+    FACULTAD ||--|{DOCENTE : "tiene/pertenece (1:N)"
+    DOCENTE ||--|{ASIGNATURA : "dicta (1:N)"
+    ESTUDIANTE }|--|{ASIGNATURA : "inscribe (N:M)"
 
 
 
