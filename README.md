@@ -132,7 +132,14 @@ Diagrama Entidad-Relación en Mermaid
     DOCENTE ||--|{ASIGNATURA : "dicta (1:N)"
     ESTUDIANTE }|--|{ASIGNATURA : "inscribe (N:M)"
 
+Base de datos implementada: 
 
+![Esquema Base de Datos de Facultad](assets/schema.jpg)
+
+
+Prueba creación de tablas por medio de JPA:
+
+![Esquema Base de Datos de Facultad](assets/logs.jpg)
 
 
 
