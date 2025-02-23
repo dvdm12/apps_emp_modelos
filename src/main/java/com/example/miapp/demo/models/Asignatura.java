@@ -20,6 +20,7 @@ public class Asignatura {
     private int creditos;
 
     @OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="docente_id")
     private List<Docente> listaDocentes;
 
     public Long getId() {

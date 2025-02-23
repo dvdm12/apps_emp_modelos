@@ -3,7 +3,7 @@ package com.example.miapp.demo.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="docente")
+@Table(name = "docente")
 public class Docente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +18,14 @@ public class Docente {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String cedula;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_facultad", referencedColumnName = "id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "facultad_id", referencedColumnName = "id") 
     private Facultad facultad;
 
+  
     public Long getId() {
         return id;
     }
@@ -72,7 +73,4 @@ public class Docente {
     public void setFacultad(Facultad facultad) {
         this.facultad = facultad;
     }
-
-    
-    
 }
