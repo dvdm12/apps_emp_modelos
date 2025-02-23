@@ -1,16 +1,22 @@
-# Excluir archivos generados por Maven
+# Archivos generados por Maven
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS (Spring Tool Suite) ###
+# Wrapper de Maven innecesario
+.mvn/wrapper/
+mvnw
+mvnw.cmd
+
+# Archivos de configuración de entornos de desarrollo
+### Spring Tool Suite (STS) ###
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
@@ -32,3 +38,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Configuraciones de Docker no necesarias en Git
+docker-compose.override.yml
+
+# Archivos del sistema
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+
+# Archivos de base de datos locales
+MySql/
