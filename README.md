@@ -141,5 +141,9 @@ Logs creación de tablas por medio de JPA:
 
 ![logs JPA](assets/logs.jpg)
 
+------------------------------------------------------
+
+![logs JPA](assets/logs2.jpg)
+
 
 
