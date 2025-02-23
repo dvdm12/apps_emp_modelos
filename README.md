@@ -1,4 +1,4 @@
-![Esquema Base de Datos de Facultad](assets/Esquema.png)
+![Esquema Base de Datos de Facultad](assets/Esquema.jpg)
 
 
 Este proyecto representa el diseño de una base de datos para la gestión de una facultad, incluyendo la relación entre facultades, docentes, asignaturas, estudiantes y decanos.
